@@ -52,11 +52,9 @@ def write_to_csv(sorted_data):
 
 
 def date_sort(filtered_data):
-    # Convert date string to datetime object for sorting
     for item in filtered_data:
         item["date"] = parser.parse(item.get("date", ""))
     
-    # Return a new sorted list of dictionaries by date
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
     print(sorted_data)
     return sorted_data
