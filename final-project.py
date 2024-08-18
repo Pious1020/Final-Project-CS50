@@ -24,3 +24,5 @@ import sensitive
 
 
 API_KEY = sensitive.API_KEY
+
+print(API_KEY)
