@@ -1,8 +1,6 @@
 import pychromecast
 
 
-chromecast, browser = pychromecast.get_listed_chromecasts(["Master Bedroom TV"])
+chromecasts, browser = pychromecast.get_listed_chromecasts(friendly_names=["Master Chromecast TV"])
 
-cast = chromecast[0]
-
-cast.wait()
+[cc.device.friendly_name for cc in chromecasts]
