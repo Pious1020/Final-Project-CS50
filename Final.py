@@ -1,2 +1,6 @@
 print("hello world")
 print("hello")
+print("new")
+print("testing")
+print("has")
+print("it")
