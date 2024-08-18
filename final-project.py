@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 import sensitive
+import json
 
 API_KEY = sensitive.API_KEY
 
@@ -11,7 +12,10 @@ response = requests.get(
 
 data = response.json()
 
-print(data)
+
+formatted_data = json.dumps(data, indent=2)
+
+print(formatted_data)
 
 
 filtered_data = []
@@ -20,10 +24,10 @@ print(filtered_data)
 for item in data.get("items", []):
     snippet = item.get("snippet", {})
     title = snippet.get("title", "")
-
-print(title)
-print(filtered_data)
-print(snippet)
+    
+    
+    if "kirtan" in title.lower():
+        filtered_data.append({"title": title, "url": f"https://www.youtube.com/watch?v={item['id']['videoId']}"})
 
 with open('filtered_results.csv', mode='w', newline='', encoding='utf-8') as file:
     writer = csv.DictWriter(file, fieldnames=['title', 'url'])
