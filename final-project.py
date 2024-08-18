@@ -24,7 +24,7 @@ def calculating_start_time():
     )
 
 
-def makingurl():
+def makingurl() -> str:
     filtered_data = []
     for item in data.get("items", []):
         snippet = item.get("snippet", {})
