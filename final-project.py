@@ -4,6 +4,7 @@ import sensitive
 import json
 from datetime import datetime
 from dateutil import parser
+from Casting import play_video
 
 
 
@@ -31,7 +32,7 @@ def filter_data(data):
         title = snippet.get("title", "")
         date = snippet.get("publishedAt", "")
 
-        if "kirtan" in title.lower():
+        if "kirtan" in title.lower() and "audio" not in title.lower():
             filtered_data.append(
                 {
                     "title": title,
@@ -43,19 +44,22 @@ def filter_data(data):
     return filtered_data
 
 def write_to_csv(sorted_data):
-        with open("filtered_sorted_results.csv", mode="w", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=["title", "url", "date"])
-            writer.writeheader()
-            writer.writerows(sorted_data)
+    with open("filtered_sorted_results.csv", mode="w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=["title", "url", "date"])
+        writer.writeheader()
+        writer.writerows(sorted_data)
+        print("Data written to CSV successfully.") 
 
 
 def date_sort(filtered_data):
+    # Convert date string to datetime object for sorting
     for item in filtered_data:
-        date = item.get("date")
-        date = parser.parse(date)
-    item["date"] = date
-    filtered_data.sort(key=lambda x: x["date"], reverse=False)
-    return filtered_data
+        item["date"] = parser.parse(item.get("date", ""))
+    
+    # Return a new sorted list of dictionaries by date
+    sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
+    print(sorted_data)
+    return sorted_data
 
 if __name__ == "__main__":
     main()
