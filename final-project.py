@@ -15,8 +15,8 @@ data = response.json()
 
 formatted_data = json.dumps(data, indent=2)
 
-print(formatted_data)
-
+with open("formatted_data.json", "w") as file:
+    file.write(formatted_data)
 
 filtered_data = []
 print(filtered_data)
