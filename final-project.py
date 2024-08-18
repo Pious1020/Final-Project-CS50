@@ -3,6 +3,8 @@ import csv
 import sensitive
 import json
 from datetime import datetime
+from dateutil import parser
+
 
 
 API_KEY = sensitive.API_KEY
@@ -41,3 +43,11 @@ def write_to_csv(filtered_data):
             writer = csv.DictWriter(file, fieldnames=["title", "url"])
             writer.writeheader()
             writer.writerows(filtered_data)
+
+
+def date_sort(filtered_data):
+    for item in filtered_data:
+        date = item.get("publishedAt")
+        date = parser.parse(date)
+        item["publishedAt"] = date
+    filtered_data.sort(key=lambda x: x["publishedAt"], reverse=False)
