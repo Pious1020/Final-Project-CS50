@@ -15,6 +15,7 @@ data = RESPONSE.json()
 formatted_data = json.dumps(data, indent=2)
 with open("formatted_data.json", "w") as file:
     file.write(formatted_data)
+    print("Data written to JSON file successfully.")
 
 
 def main():
@@ -22,6 +23,7 @@ def main():
     print(filtered_data)
     sorted_data = date_sort(filtered_data)
     write_to_csv(sorted_data)
+    play_video(sorted_data[0]["url"])
 
 
 def filter_data(data):
@@ -54,7 +56,6 @@ def write_to_csv(sorted_data):
 def date_sort(filtered_data):
     for item in filtered_data:
         item["date"] = parser.parse(item.get("date", ""))
-    
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
     print(sorted_data)
     return sorted_data
