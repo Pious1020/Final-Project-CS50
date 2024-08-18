@@ -24,3 +24,8 @@ for item in data.get("items", []):
 print(title)
 print(filtered_data)
 print(snippet)
+
+with open('filtered_results.csv', mode='w', newline='', encoding='utf-8') as file:
+    writer = csv.DictWriter(file, fieldnames=['title', 'url'])
+    writer.writeheader()
+    writer.writerows(filtered_data)
