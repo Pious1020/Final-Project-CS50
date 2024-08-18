@@ -53,7 +53,7 @@ def date_sort(filtered_data):
     for item in filtered_data:
         date = item.get("date")
         date = parser.parse(date)
-        item["date"] = date
+    item["date"] = date
     filtered_data.sort(key=lambda x: x["date"], reverse=False)
     return filtered_data
 
