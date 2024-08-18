@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+import sensitive
 
 page_to_scrape = requests.get("http://quotes.toscrape.com")
 soup = BeautifulSoup(page_to_scrape.text, "html.parser")
@@ -20,3 +21,6 @@ for quote, author in zip(quotes, authors):
     writer.writerow([quote.text, author.text])
 
 file.close()
+
+
+API_KEY = sensitive.API_KEY
