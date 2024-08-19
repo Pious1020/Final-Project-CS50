@@ -7,7 +7,6 @@ from dateutil import parser
 from Casting import play_video
 
 
-
 API_KEY = sensitive.API_KEY
 RESPONSE = requests.get(sensitive.APIREQUEST)
 data = RESPONSE.json()
@@ -39,18 +38,21 @@ def filter_data(data):
                 {
                     "title": title,
                     "url": f"https://www.youtube.com/watch?v={item['id']['videoId']}",
-                    "date" : date
+                    "date": date,
                 }
             )
     print(filtered_data)
     return filtered_data
 
+
 def write_to_csv(sorted_data):
-    with open("filtered_sorted_results.csv", mode="w", newline="", encoding="utf-8") as file:
+    with open(
+        "filtered_sorted_results.csv", mode="w", newline="", encoding="utf-8"
+    ) as file:
         writer = csv.DictWriter(file, fieldnames=["title", "url", "date"])
         writer.writeheader()
         writer.writerows(sorted_data)
-        print("Data written to CSV successfully.") 
+        print("Data written to CSV successfully.")
 
 
 def date_sort(filtered_data):
@@ -59,6 +61,7 @@ def date_sort(filtered_data):
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
     print(sorted_data)
     return sorted_data
+
 
 if __name__ == "__main__":
     main()
