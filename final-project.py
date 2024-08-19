@@ -23,7 +23,7 @@ def main():
     print(filtered_data)
     sorted_data = date_sort(filtered_data)
     write_to_csv(sorted_data)
-    play_video(sorted_data[0]["url"])
+    play_video(sorted_data[1]["url"])
 
 
 def filter_data(data):
