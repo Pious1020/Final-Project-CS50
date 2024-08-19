@@ -21,8 +21,9 @@ def main():
     filtered_data = filter_data(data)
     print(filtered_data)
     sorted_data = date_sort(filtered_data)
-    write_to_csv(sorted_data)
-    play_video(sorted_data[1]["url"])
+    sorted_filtered_data = filter_results_by_date(sorted_data)
+    write_to_csv(sorted_filtered_data)
+    play_video(sorted_data[0]["url"])
 
 
 def filter_data(data):
@@ -61,6 +62,15 @@ def date_sort(filtered_data):
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
     print(sorted_data)
     return sorted_data
+
+def filter_results_by_date(sorted_data):
+    today = datetime.now()
+    filtered_data = []
+    for item in sorted_data:
+        if item["date"].date() == today.date():
+            filtered_data.append(item)
+    return filtered_data
+
 
 
 if __name__ == "__main__":
