@@ -10,7 +10,9 @@ from datetime import date
 
 # api request
 API_KEY = sensitive.API_KEY
-RESPONSE = requests.get(f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&channelId=UCYn6UEtQ771a_OWSiNBoG8w&order=date&q=sgpc%20live&eventType=completed&type=video&key={API_KEY}")
+RESPONSE = requests.get(
+    f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&channelId=UCYn6UEtQ771a_OWSiNBoG8w&order=date&q=sgpc%20live&eventType=completed&type=video&key={API_KEY}"
+)
 data = RESPONSE.json()
 
 # writing data to json file
@@ -36,8 +38,6 @@ print(afterdate)
 print(beforedate)
 
 
-
-
 def main():
     filtered_data = filter_data(data)
     sorted_data = date_sort(filtered_data)
@@ -49,7 +49,6 @@ def main():
     else:
         print("It is time to run script2.")
         # play_video(sorted_data[1]["url"])
-        
 
 
 def filter_data(data):
@@ -80,6 +79,7 @@ def date_sort(filtered_data):
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
     return sorted_data
 
+
 def filter_results_by_date(sorted_data):
     print("Filtering results by date.")
     today = datetime.now()
@@ -89,6 +89,7 @@ def filter_results_by_date(sorted_data):
             print("Match found")
             filtered_data.append(item)
     return filtered_data
+
 
 def write_to_csv(sorted_data):
     with open("filtered_sorted_data.csv", "w", newline="") as csvfile:
@@ -104,13 +105,6 @@ def write_to_csv(sorted_data):
 #     date = data.get("items", [])[0].get("snippet", {}).get("publishedAt", "")
 #     if datetime.now().date() >= :
 #         print("Button clicked")
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
