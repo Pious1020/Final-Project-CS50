@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Wispy Pine</title>
-
-    <!-- Recommended meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <!-- PyScript CSS -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.1/core.css">
-
-    <!-- This script tag bootstraps PyScript -->
-    <script type="module" src="https://pyscript.net/releases/2024.8.1/core.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-    <script type="py" src="./main.py" config="./pyscript.toml" terminal></script>
+    <h1 id="output">Hello PyScript!</h1>
+    <button py-click="my_function()">Click Me</button>
+
+    <py-script>
+        def my_function():
+            output = document.getElementById('output')
+            output.innerHTML = "Button Clicked: Python Function Executed!"
+    </py-script>
 </body>
 </html>
+
