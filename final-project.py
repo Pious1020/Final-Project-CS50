@@ -7,8 +7,6 @@ from dateutil import parser
 from chrome_casting import play_video
 import re
 
-
-
 API_KEY = sensitive.API_KEY
 RESPONSE = requests.get(sensitive.APIREQUEST)
 data = RESPONSE.json()
@@ -21,11 +19,10 @@ with open("formatted_data.json", "w") as file:
 
 def main():
     filtered_data = filter_data(data)
-    # print(filtered_data)
     sorted_data = date_sort(filtered_data)
     sorted_filtered_data = filter_results_by_date(sorted_data)
     write_to_csv(sorted_filtered_data)
-    play_video(sorted_data[0]["url"])
+    # play_video(sorted_data[0]["url"])
 
 
 def filter_data(data):
@@ -34,11 +31,12 @@ def filter_data(data):
         snippet = item.get("snippet", {})
         title = snippet.get("title", "")
         date = snippet.get("publishedAt", "")
-        match = re.search(r"Official SGPC LIVE \| Gurbani Kirtan \| Sachkhand Sri Harmandir Sahib, Sri Amritsar \| /d/d./d/d./d/d/d/d", title)
-        if match and (datetime.now().date() == parser.parse(date).date()) :
+        match = re.search(
+            r"Official SGPC LIVE \| Gurbani Kirtan \| Sachkhand Sri Harmandir Sahib, Sri Amritsar \| \d{2}\.\d{2}\.\d{4}",
+            title,
+        )
+        if match:
             print("Match found")
-            with open("title match date.txt", "w") as file:
-                file.write(f"{title} - {date}\n")
             filtered_data.append(
                 {
                     "title": title,
@@ -49,37 +47,37 @@ def filter_data(data):
     return filtered_data
 
 
-def write_to_csv(sorted_data):
-    with open(
-        "filtered_sorted_results.csv", mode="w", newline="", encoding="utf-8"
-    ) as file:
-        writer = csv.DictWriter(file, fieldnames=["title", "url", "date"])
-        writer.writeheader()
-        writer.writerows(sorted_data)
-        print("Data written to CSV successfully.")
-
-
 def date_sort(filtered_data):
     for item in filtered_data:
         item["date"] = parser.parse(item.get("date", ""))
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
-    # print(sorted_data)
     return sorted_data
 
+
 def filter_results_by_date(sorted_data):
+    print("Filtering results by date.")
     today = datetime.now()
     filtered_data = []
     for item in sorted_data:
         if item["date"].date() == today.date():
+            print("Match found")
             filtered_data.append(item)
     return filtered_data
+
+def write_to_csv(sorted_data):
+    with open("filtered_sorted_data.csv", "w", newline="") as csvfile:
+        fieldnames = ["title", "date", "url"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(sorted_data)
+        print("Data written to CSV successfully.")
+
 
 # def button_click():
 #     data = RESPONSE.json()
 #     date = data.get("items", [])[0].get("snippet", {}).get("publishedAt", "")
 #     if datetime.now().date() >= :
 #         print("Button clicked")
-
 
 
 if __name__ == "__main__":
