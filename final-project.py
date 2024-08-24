@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 from dateutil import parser
 from chrome_casting import play_video
+import re
 
 
 
@@ -20,7 +21,7 @@ with open("formatted_data.json", "w") as file:
 
 def main():
     filtered_data = filter_data(data)
-    print(filtered_data)
+    # print(filtered_data)
     sorted_data = date_sort(filtered_data)
     sorted_filtered_data = filter_results_by_date(sorted_data)
     write_to_csv(sorted_filtered_data)
@@ -29,13 +30,15 @@ def main():
 
 def filter_data(data):
     filtered_data = []
-    print(filtered_data)
     for item in data.get("items", []):
         snippet = item.get("snippet", {})
         title = snippet.get("title", "")
         date = snippet.get("publishedAt", "")
-
-        if "kirtan" in title.lower() and "audio" not in title.lower():
+        match = re.search(r"Official SGPC LIVE \| Gurbani Kirtan \| Sachkhand Sri Harmandir Sahib, Sri Amritsar \| /d/d./d/d./d/d/d/d", title)
+        if match and (datetime.now().date() == parser.parse(date).date()) :
+            print("Match found")
+            with open("title match date.txt", "w") as file:
+                file.write(f"{title} - {date}\n")
             filtered_data.append(
                 {
                     "title": title,
@@ -43,7 +46,6 @@ def filter_data(data):
                     "date": date,
                 }
             )
-    print(filtered_data)
     return filtered_data
 
 
@@ -61,7 +63,7 @@ def date_sort(filtered_data):
     for item in filtered_data:
         item["date"] = parser.parse(item.get("date", ""))
     sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
-    print(sorted_data)
+    # print(sorted_data)
     return sorted_data
 
 def filter_results_by_date(sorted_data):
@@ -71,6 +73,12 @@ def filter_results_by_date(sorted_data):
         if item["date"].date() == today.date():
             filtered_data.append(item)
     return filtered_data
+
+# def button_click():
+#     data = RESPONSE.json()
+#     date = data.get("items", [])[0].get("snippet", {}).get("publishedAt", "")
+#     if datetime.now().date() >= :
+#         print("Button clicked")
 
 
 
