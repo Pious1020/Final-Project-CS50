@@ -19,8 +19,8 @@ afterdate = afterdate.isoformat()
 beforedate = beforedate.isoformat()
 beforedate = beforedate + "Z"
 afterdate = afterdate + "Z"
-print(afterdate)
-print(beforedate)
+#print(afterdate)
+#print(beforedate)
 
 # api request
 API_KEY = sensitive.API_KEY
@@ -32,7 +32,7 @@ data = RESPONSE.json()
 formatted_data = json.dumps(data, indent=2)
 with open("formatted_data.json", "w", encoding="utf-8") as file:
     file.write(formatted_data)
-    print("Data written to JSON file successfully.")
+    #print("Data written to JSON file successfully.")
 
 # checking if time is after 4pm
 current_time = datetime.now()
@@ -48,11 +48,11 @@ def main():
     filtered_sorted_data = date_sort(filtered_data)
     write_to_csv(filtered_sorted_data, "filtered_sorted_data.csv")
     if current_time.time() <= set_time:
-        print("It is time to play morning kirtan.")
-        #play_video(filtered_sorted_data[0]["url"])
+        #print("It is time to play morning kirtan.")
+        play_video(filtered_sorted_data[0]["url"])
     else:
-        print("It is time to play evening kirtan.")
-        #play_video(filtered_sorted_data[2]["url"])
+        #print("It is time to play evening kirtan.")
+        play_video(filtered_sorted_data[2]["url"])
 
 
 def data_cleanup(data: list) -> list:
@@ -75,13 +75,13 @@ def data_cleanup(data: list) -> list:
                     "date": date,
                 }
             )
-    write_to_csv(filtered_data, "clean_data.csv")
+    #write_to_csv(filtered_data, "clean_data.csv")
     return filtered_data
 
 
 def date_sort(filtered_data: list) -> list:
     date_sorted_data = sorted(filtered_data, key=lambda x: x["date"], reverse=False)
-    write_to_csv(date_sorted_data, "date_sorted_data.csv")
+    #write_to_csv(date_sorted_data, "date_sorted_data.csv")
     return date_sorted_data
 
 
@@ -94,7 +94,7 @@ def filter_results_by_date(sorted_data: list) -> list:
     for item in sorted_data:
         if item["date"].date() == today.date():
             date_filtered_data.append(item)
-    write_to_csv(date_filtered_data, "date_filtered_data.csv")
+    #write_to_csv(date_filtered_data, "date_filtered_data.csv")
     return date_filtered_data
 
 

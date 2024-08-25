@@ -6,11 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     run_script()
-    return '', 204  # No content response
+    return '', 204
 
 def run_script():
     try:
-        # Adjust the path to your script as necessary
         subprocess.run(['python', 'final-project.py'], capture_output=True, text=True)
     except Exception as e:
         print(f'Error running script: {str(e)}')
