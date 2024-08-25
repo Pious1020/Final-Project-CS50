@@ -7,18 +7,24 @@ from dateutil import parser
 import sensitive
 from chrome_casting import play_video
 
-
 now = datetime.now()
+
+
+# before and after date for api request
 afterdate = now.replace(hour=0, minute=0, second=0, microsecond=0)
 
 beforedate = now.replace(hour=23, minute=59, second=59, microsecond=999999)
 
 afterdate = afterdate.isoformat()
 beforedate = beforedate.isoformat()
+beforedate = beforedate + "Z"
+afterdate = afterdate + "Z"
+print(afterdate)
+print(beforedate)
 
 # api request
 API_KEY = sensitive.API_KEY
-APIREQUEST = f" https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&channelId=UCYn6UEtQ771a_OWSiNBoG8w&order=date&q=Official+SGPC+LIVE+%7C+Gurbani+Kirtan+%7C+Sachkhand+Sri+Harmandir+Sahib%2C+Sri+Amritsar&eventType=completed&type=video&publishedBefore={beforedate}&publishedAfter={afterdate}key={API_KEY} "
+APIREQUEST = f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&channelId=UCYn6UEtQ771a_OWSiNBoG8w&order=date&q=Official+SGPC+LIVE+%7C+Gurbani+Kirtan+%7C+Sachkhand+Sri+Harmandir+Sahib%2C+Sri+Amritsar+%7C&type=video&key={API_KEY}&publishedAfter={afterdate}&publishedBefore={beforedate}"
 RESPONSE = requests.get(APIREQUEST, timeout=10)
 data = RESPONSE.json()
 
@@ -26,13 +32,11 @@ data = RESPONSE.json()
 formatted_data = json.dumps(data, indent=2)
 with open("formatted_data.json", "w", encoding="utf-8") as file:
     file.write(formatted_data)
-    # print("Data written to JSON file successfully.")
+    print("Data written to JSON file successfully.")
 
 # checking if time is after 4pm
 current_time = datetime.now()
 set_time = time(16, 0)
-
-
 
 
 
@@ -82,23 +86,16 @@ def date_sort(filtered_data: list) -> list:
 
 
 def filter_results_by_date(sorted_data: list) -> list:
-    today = datetime.now().date()
+    # print("Filtering results by date.")
+    today = datetime.now()
     date_filtered_data = []
-    print(f"{today}")
-
     for item in sorted_data:
-        try:
-            # Parse the date from the item
-            item_date = parser.parse(item.get("date", "")).date()
-            print(f"Checking item with date: {item_date}")  # Debugging
-            if item_date == today:
-                date_filtered_data.append(item)
-        except ValueError as e:
-            print(f"Error parsing date for item: {e}")
-
-    print(f"Number of items after date filtering: {len(date_filtered_data)}")  # Debugging
+        item["date"] = parser.parse(item.get("date", ""))
+    for item in sorted_data:
+        if item["date"].date() == today.date():
+            date_filtered_data.append(item)
+    write_to_csv(date_filtered_data, "date_filtered_data.csv")
     return date_filtered_data
-
 
 
 def write_to_csv(json_data: list, csv_file_name: str) -> None:
