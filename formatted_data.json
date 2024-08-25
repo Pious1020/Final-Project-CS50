@@ -1,16 +1,16 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "Sh_1xa8gWomks-F0QGLM-urWr60",
+  "etag": "tahtFS-lxblPDph_XzsSaSgUXuM",
   "nextPageToken": "CAoQAA",
   "regionCode": "US",
   "pageInfo": {
-    "totalResults": 81048,
+    "totalResults": 65761,
     "resultsPerPage": 10
   },
   "items": [
     {
       "kind": "youtube#searchResult",
-      "etag": "40Ehs_fm8T6UZBgtWSTAETojpi8",
+      "etag": "jKU3FLM4JshbjM3AldP8ES7_Z74",
       "id": {
         "kind": "youtube#video",
         "videoId": "tO9Q0xKt_5w"
@@ -78,41 +78,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "n4t-XwBkBUrE3r3qphBXeTO5sgM",
-      "id": {
-        "kind": "youtube#video",
-        "videoId": "cPxTRoVH3kA"
-      },
-      "snippet": {
-        "publishedAt": "2024-08-25T03:38:14Z",
-        "channelId": "UCYn6UEtQ771a_OWSiNBoG8w",
-        "title": "\u0a17\u0a41\u0a30\u0a38\u0a3f\u0a71\u0a16 \u0a2a\u0a3f\u0a06\u0a30\u0a47\u0964\u0a17\u0a41\u0a30\u0a42 \u0a18\u0a30 \u0a26\u0a47 \u0a15\u0a40\u0a30\u0a24\u0a28\u0a40\u0a0f \u0a2d\u0a3e\u0a08 \u0a38\u0a41\u0a16\u0a1c\u0a40\u0a24 \u0a38\u0a3f\u0a70\u0a18 \u0a15\u0a41\u0a39\u0a3e\u0a5c\u0a15\u0a3e",
-        "description": "\u0a17\u0a41\u0a30\u0a38\u0a3f\u0a71\u0a16 \u0a2a\u0a3f\u0a06\u0a30\u0a47\u0964\u0a17\u0a41\u0a30\u0a42 \u0a18\u0a30 \u0a26\u0a47 \u0a15\u0a40\u0a30\u0a24\u0a28\u0a40\u0a0f \u0a2d\u0a3e\u0a08 \u0a38\u0a41\u0a16\u0a1c\u0a40\u0a24 \u0a38\u0a3f\u0a70\u0a18 \u0a15\u0a41\u0a39\u0a3e\u0a5c\u0a15\u0a3e This is the official ...",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/cPxTRoVH3kA/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/cPxTRoVH3kA/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/cPxTRoVH3kA/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          }
-        },
-        "channelTitle": "SGPC, Sri Amritsar",
-        "liveBroadcastContent": "none",
-        "publishTime": "2024-08-25T03:38:14Z"
-      }
-    },
-    {
-      "kind": "youtube#searchResult",
-      "etag": "4GuvJAl8zPaJxO1Dd4oMjcGJ_y8",
+      "etag": "gBAMxORjFuyEmgoinB5ISUBNeu8",
       "id": {
         "kind": "youtube#video",
         "videoId": "t9tSw7Hy8M4"
@@ -248,6 +214,40 @@
     },
     {
       "kind": "youtube#searchResult",
+      "etag": "CF9mqz-kC5PJAYdAuJivqYhT59s",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "oRlm7neB9UE"
+      },
+      "snippet": {
+        "publishedAt": "2024-08-24T14:46:13Z",
+        "channelId": "UCYn6UEtQ771a_OWSiNBoG8w",
+        "title": "Official SGPC LIVE | Gurbani Kirtan | Sachkhand Sri Harmandir Sahib, Sri Amritsar | 24.08.2024",
+        "description": "\u0a17\u0a41\u0a30\u0a2c\u0a3e\u0a23\u0a40 \u0a15\u0a40\u0a30\u0a24\u0a28, \u0a38\u0a71\u0a1a\u0a16\u0a70\u0a21 \u0a38\u0a4d\u0a30\u0a40 \u0a39\u0a30\u0a3f\u0a2e\u0a70\u0a26\u0a30 \u0a38\u0a3e\u0a39\u0a3f\u0a2c, \u0a38\u0a4d\u0a30\u0a40 \u0a05\u0a70\u0a2e\u0a4d\u0a30\u0a3f\u0a24\u0a38\u0a30 | \u0a38\u0a70\u0a27\u0a3f\u0a06 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/oRlm7neB9UE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/oRlm7neB9UE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/oRlm7neB9UE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "SGPC, Sri Amritsar",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-08-24T14:46:13Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
       "etag": "GWKiCCQftIWtR5OLNscVdyQgcEE",
       "id": {
         "kind": "youtube#video",
@@ -282,7 +282,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "zUrXdO04Z_X_yE7E2ASkuurMmew",
+      "etag": "TU2KKxTistl7PZTjCagsOZ39SfQ",
       "id": {
         "kind": "youtube#video",
         "videoId": "V3CxSjKJfts"
