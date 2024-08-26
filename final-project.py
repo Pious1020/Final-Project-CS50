@@ -5,7 +5,8 @@ from datetime import datetime, time
 import requests
 from dateutil import parser
 import sensitive
-from chrome_casting import play_video
+import os
+
 
 now = datetime.now()
 
@@ -45,7 +46,7 @@ def main():
     filtered_data = filter_results_by_date(clean_data)
     # print("Filtered data: ")
     filtered_sorted_data = date_sort(filtered_data)
-    write_to_csv(filtered_sorted_data, "filtered_sorted_data.csv")
+    # write_to_csv(filtered_sorted_data, "filtered_sorted_data.csv")
     if current_time.time() <= set_time:
         # print("It is time to play morning kirtan.")
         play_video(filtered_sorted_data[0]["url"])
@@ -53,6 +54,8 @@ def main():
         # print("It is time to play evening kirtan.")
         play_video(filtered_sorted_data[2]["url"])
 
+def play_video(URl):
+    os.system("catt cast " + URl)
 
 def data_cleanup(data: list) -> list:
     regularmatch = r"""Official SGPC LIVE \| Gurbani Kirtan \| Sachkhand Sri Harmandir Sahib, Sri Amritsar \| \d{2}\.\d{2}\.\d{4}"""
