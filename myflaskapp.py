@@ -11,8 +11,8 @@ def index():
 def run_script():
     try:
         subprocess.run(['python', 'final-project.py'], capture_output=True, text=True)
-    except Exception as e:
-        print(f'Error running script: {str(e)}')
+    except Exception as x:
+        print(f'Error running script: {str(x)}')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
