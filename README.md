@@ -8,9 +8,22 @@ This script allows you to search a video from a specific channel and then casts 
 
 ## Prerequisits
 
-- Python
-- pip install -r requirments
+- Python 3 or later
 
 ## Install
+
+- git clone "https://github.com/Pious1020/Final-Project-CS50-cast-youtube-video-to-chromecast-.git"
+- pip install -r requirments.txt
+
+## Features
+- uses catt(cast all the things) to cast videos to chromecast
+- uses google's youtube api to get videos and channel id
+
+## Usage
+
+'''
+hello
+'''
+
 
 
