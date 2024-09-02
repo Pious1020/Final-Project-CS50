@@ -21,7 +21,8 @@ This script allows you to search a video from a specific channel and then casts 
 
 ## Usage
 
-'testing'
+`python final_project.py`
+
 
 
 
