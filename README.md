@@ -21,7 +21,13 @@ This script allows you to search a video from a specific channel and then casts 
 
 ## Usage
 
-`python final_project.py`
+```
+$ python final_project.py
+$ Enter name of chromecast: _______
+$ Enter channel name: ______
+$ Input what you want to search for: ______
+$ Casting to "Name of chromecast"
+```
 
 
 
