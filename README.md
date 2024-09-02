@@ -1,5 +1,7 @@
 # Final Project CS50(cast youtube video to chromecast)
 
+#### Video Demo: https://www.youtube.com/watch?v=C8VxWZp23i4
+
 This script allows you to search a video from a specific channel and then casts it to a chromecast of your choice
 
 - Search for videos on the specified youtube channel.

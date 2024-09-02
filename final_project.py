@@ -3,15 +3,6 @@ from datetime import datetime
 import requests
 import sensitive
 
-
-now = datetime.now()
-afterdate = now.replace(hour=0, minute=0, second=0, microsecond=0)
-beforedate = now.replace(hour=23, minute=59, second=59, microsecond=999999)
-afterdate = afterdate.isoformat()
-beforedate = beforedate.isoformat()
-beforedate = beforedate + "Z"
-afterdate = afterdate + "Z"
-
 API_KEY = sensitive.API_KEY
 
 
