@@ -9,6 +9,7 @@ This script allows you to search a video from a specific channel and then casts 
 ## Prerequisits
 
 - Python 3 or later
+- chromecast must be on same wifi as the machine you are running it on
 
 ## Install
 
